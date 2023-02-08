@@ -51,6 +51,11 @@ class Orc(Character):
     def check_berserk_factor(self):
         return int(self.__berserk_factor)
 
+def print_health(hero, orc):
+    print("Hero health: ", end = "")
+    hero.get_health()
+    print("Orc health: ", end = "")
+    orc.get_health()
 
 def play(hero, orc):
     while(hero.is_alive() and orc.is_alive()):
@@ -62,40 +67,28 @@ def play(hero, orc):
                 damage = random.randrange(1, 20) * orc.check_berserk_factor()
                 hero.take_damage(damage)
                 print("\nDamage taken by hero: " + str(damage))
-                print("Hero health: ", end = "")
-                hero.get_health()
-                print("Orc health: ", end = "")
-                orc.get_health()
+                print_health(hero, orc)
                 
             case 1:
                 # Human punches orc
                 damage = random.randrange(1, 20)
                 orc.take_damage(damage)
                 print("\nDamage taken by orc: " + str(damage))
-                print("Hero health: ", end = "")
-                hero.get_health()
-                print("Orc health: ", end = "")
-                orc.get_health()
+                print_health(hero, orc)
                 
             case 2:
                 # human takes healing
                 health = random.randrange(1, 20)
                 hero.take_healing(health)
                 print("\nHealing taken by hero: " + str(health))
-                print("Hero health: ", end = "")
-                hero.get_health()
-                print("Orc health: ", end = "")
-                orc.get_health()
+                print_health(hero, orc)
                 
             case 3:
                 # orc takes healing
                 health = random.randrange(1, 20)
                 orc.take_healing(health)
                 print("\nHealing taken by orc: " + str(health))
-                print("Hero health: ", end = "")
-                hero.get_health()
-                print("Orc health: ", end = "")
-                orc.get_health()
+                print_health(hero, orc)
 
 
 h = Hero("Bron", 50, "DragonSlayer")
